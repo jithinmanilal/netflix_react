@@ -23,7 +23,7 @@ function Card(props) {
       autoplay: 1,
     },
   };
-  const hadleTrailer = (id)=>{
+  const handleTrailer = (id)=>{
     axios.get(`/movie/${id}/videos?api_key=${API_KEY}`).then(response=>{
       if(response.data.results.length!==0){
         setUrlId(response.data.results[0])
@@ -38,7 +38,7 @@ function Card(props) {
         <div className='posters'>
           {movies.map((obj)=>
 
-          <img onClick={()=>hadleTrailer(obj.id)} className='poster' alt='poster' src={`${imageUrl+obj.poster_path}`} />
+          <img onClick={()=>handleTrailer(obj.id)} className='poster' alt='poster' src={`${imageUrl+obj.poster_path}`} />
           )}
         </div>
         { urlId && <Youtube videoId={urlId.key} opts={opts} /> }
